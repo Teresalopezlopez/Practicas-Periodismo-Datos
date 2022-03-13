@@ -25,7 +25,7 @@ La industria y el sector manufacturero generan emisiones, sobre todo a partir de
 
 ### 3. Tala de bosques
 La tercera y última de las principales causas del cambio climático apuntadas por la ONU es la tala de bosques. La industria y el sector manufacturero generan emisiones, sobre todo a partir de la quema de combustibles fósiles que permite producir la energía necesaria para la producción de cemento, hierro, acero, electrónica, plásticos, ropa y otros bienes. La minería y otros procesos industriales también liberan gases.
-![infografía](https://candidmanmx.wordpress.com/2015/09/29/infografia-deforestacion-mundial/)
+![infografía](C:\Users\Terese\Desktop\UC3M\5\2\Periodismo de datos/infografía deforestación.jpg)
 
 ## Fuentes:
 - **Unión Europea**: [informe pobreza energética](https://op.europa.eu/en/publication-detail/-/publication/b9a25ba4-9ef6-11ea-9d2d-01aa75ed71a1/language-)
