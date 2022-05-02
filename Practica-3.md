@@ -1,5 +1,5 @@
 # Práctica 3 
-Este ejercicio consiste en la actualización y explicación de los cuadernos trabajados en **Jupyter con Python y R**. Este archivo `.md` incluye la explicación y enlace de los archivos que componen esta práctica. Cada cuaderno podrá encontrarse en dos formatos, **html** y **ipnyb**.
+Este ejercicio consiste en la actualización y explicación de los cuadernos trabajados en **Jupyter con Python y R**. Utilizamos librerías como **Pandas** o **Folium**, que primero instalamos y luego importamos. Definimos los datos para crear el *dataframe*. Utilizamos las funciones para explorar los datos y representarlos de disntintas maneras. Este archivo `.md` incluye la explicación de los archivos que componen esta práctica. Cada cuaderno podrá encontrarse en dos formatos, **html** y **ipnyb**.
 ## Probando con R
 Este cuaderno tiene como objetivo la familiarización con **R**, un lengauje de programación enfocado al análisis estadístico a través de la reproducción de un gráfico con la librería **ggplot 2**. En concreto, se pretende elaborar un gráfico de barras con etiquetas a partir de datos de **Newtral** sobre las bajas materiales que la guerra Rusia - Ucrania está causando en cada ejércirto.
 
