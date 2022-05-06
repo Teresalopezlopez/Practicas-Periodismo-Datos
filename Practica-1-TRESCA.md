@@ -15,4 +15,3 @@ Y lo que es más importante, esta conciencia sobre el límite de la investigaci�
 > Lo que es más importante, muestra que muchas personas están dispuestas, si se les da la oportunidad, a ver los hechos por sí mismos.
 
 El trabajo puede **mejorar** notablemente en la parte de **visualización de los datos**. Podemos encontrar cierta discordancia entre los datos presentados en el texto y los representados en el único gráfico de barras que contiene la pieza. Esto hace que al lector no le llegue eficazmente la información y dude de la **jerarquía de los datos** presentados, oscureciendo el mensaje o conclusión final. 
-

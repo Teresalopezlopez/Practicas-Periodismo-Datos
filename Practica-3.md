@@ -1,13 +1,13 @@
 # Práctica 3 
-Este ejercicio consiste en la actualización y explicación de los cuadernos trabajados en **Jupyter con Python y R**. Utilizamos librerías como **Pandas** o **Folium**, que primero instalamos y luego importamos. Definimos los datos para crear el *dataframe*. Utilizamos las funciones para explorar los datos y representarlos de disntintas maneras. Este archivo `.md` incluye la explicación de los archivos que componen esta práctica. Cada cuaderno podrá encontrarse en dos formatos, **html** y **ipnyb**.
-## Probando con R
-Este cuaderno tiene como objetivo la familiarización con **R**, un lengauje de programación enfocado al análisis estadístico a través de la reproducción de un gráfico con la librería **ggplot 2**. En concreto, se pretende elaborar un gráfico de barras con etiquetas a partir de datos de **Newtral** sobre las bajas materiales que la guerra Rusia - Ucrania está causando en cada ejércirto.
-
-## Python Prueba 
-Este notebook supone la primera toma de contacto con **Python en Jupyter**. En él aprendo la función `print` y doy los primeros pasos con Python. Aprendemos a realizar operaciones aritmétcias y un ejemplo de gráfico de densidad. Instalamos la librería **seaborn** para trabajar `(!pip install seabor)`. A continuación, recreamos en Python un gráfico de **Newtral** elaborado en Datawrapper y la librería de visualización de datos **matplotlib** y **NumPy** de cálculo. Definimos también el estilo del gráfico. 
+Este ejercicio consiste en la actualización y explicación de los cuadernos trabajados en **Jupyter con Python**. Este archivo `.md` incluye la explicación y enlace de los archivos que componen esta práctica. Cada cuaderno podrá encontrarse en dos formatos, **html** y **ipnyb**.
 
 ## Api Pandas Folium 
-En este cuaderno clasificamos por categorías una serie de datos (**API**) de los accidentes de tráfico en la ciudad de Zaragoza registrados por su Ayuntamiento en un archivo **CSV**. Además representamos su lugar geográfico en un mapa. Utilizamos la librería **Pandas** para la reproducción gráfica de los datos y la librería **Folium** para su visualización en el mapa. 
+En este cuaderno representamos en un mapa los accidentes de tráfico ocurridos en Zaragoza extraídos de [aquí](https://www.zaragoza.es/sede/servicio/transporte/accidentalidad-trafico/accidente.csv). Utilizamos la librería **Pandas** para el análisis de los datos y la librería **Folium** para su visualización en el mapa. Tras la instalación e importación de librerías, definimos las variables y creamos un dataframe con los datos que exploramos con distitnas funciones. Con la función `folium.Marker` señalamos el lugar de los accidentes en el mapa.
+Para acceder al cuaderno en formato **html** pulse [aquí](api-pandas-folium.html).
+Para acceder al cuaderno en formato **ipnyb** pulse [aquí](api-pandas-folium.ipynb).
 
 ## Python Api Covid19 Pandas
-A través de este ejercicio aprendemos a usar la **API del Covid con la librería Pandas con Python en Jupyter**. Tras instalar e importar la librería definimos la variable y creamos el dataframe para, a partir de su exploración, representar la evolución de la pandemia en tiempo real y su expansión en otros países. Por último se comparan ambos escenarios.
+Utilizamos la api del covid para comparar la evolución de la pandemia en 3 países: España, Italia y Francia. Tras instalar e importar las librería definimos la variable y creamos el dataframe para, a partir de su exploración, visualizar la evolución de la pandemia en el tiempo y su expansión en otros países. Por último se comparan los disntintos escenarios. Primero las curvas de España e Italia y finalmente añadimos la de Francia. 
+Para acceder al ejercicio en formato **html** pulse [aquí](python-api-covid19-pandas.html).
+Para acceder al ejercicio en formato **ipnyb** pulse [aquí](python-api-covid19-pandas.ipnyb).
+Por último guardamos los datos de la compración de los casos en Italia y España que puede encontrarse [aquí](esvsit.csv) y su representación gráfica que puede verse [aquí](esvsitvsmx.png).

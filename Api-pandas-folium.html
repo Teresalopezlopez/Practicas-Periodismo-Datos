@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Api-pandas-folium</title>
+<title>api-pandas-folium</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13089,7 +13089,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>En este ejercicio clasificaremos en categorías a partir de un archivo <strong>CSV</strong> un conjunto de datos sobre los accidentes de tráfico de la ciudad de Zaragoza registrados por su Ayuntamiento. Estas categorías son <em>año</em>, <em>tipo</em>, <em>afectado</em>, <em>estado</em>, <em>vehículo</em> y <em>calle</em>. Esta última nos perminitrá añadir en un mapa las coordenadas de la ciudad para representar en él la localización geográfica.</p>
+<p>En este cuaderno utilizaremos las librerías de <strong>Pandas</strong> y <strong>Folium</strong> para leer una API que importaremos como archivo <strong>.csv</strong> sobre accidentes de tráfico en Zaragoza registrados por su Ayuntamiento. El objetivo es que <strong>Python</strong> lea esos datos para poder explorarlos con distintas funciones para representar la ubicación de los accidentes en un mapa. Lo primero lo podremos hacer con Pandas, una librería de código abierto de Python que proporciona herramientas de análisis y manipulación de datos. Lo segundo lo haremos con Folium, una librería de creación de mapas web interactivos con Python.</p>
+<p>La relación entre ambas librerías para el manejo y representación de este conjunto de datos es que una de sus catergorías es <code>calle</code> y sus datos son coordenadas geográficas. De ahí que supongan datos propicios para la combinación de ambas herramientas.</p>
 
 </div>
 </div>
@@ -13104,7 +13105,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Definimos las variables con las que vamos a trabajar para que Python conozca los datos. Por un lado el link de la base de datos y por otro las coordenadas de Zaragoza.</p>
+<p>Definimos las variables con las que vamos a trabajar para que Python conozca los datos. Una variable es aquello que puedo crear como tal al nombrarlo. Su sintaxis es <code>=</code>, por ejemplo, <em>x = x</em>. Vamos a definir como variables los elementos básicos de nuestro trabajo, a saber, los datos (para trabajarlos con Pandas) y las coordenadas geográficas de Zaragoza, escenario de los datos a representar (para hacerlo con Folium).</p>
 
 </div>
 </div>
@@ -13126,7 +13127,21 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>La librerías que utilizaremos son <strong>Pandas</strong> para el análisis de datos y <strong>Folium</strong>, para la visualización de un mapa. Primero las instalamos y después las importamos.</p>
+<p>Al definir estas variables no es necesario volver a copiar el link cuando queramos vincular los datos, sino que lo haremos con la referencia que hemos creado, en este caso <code>url_zrgz</code> y <code>geo_zrgz</code>. Como vemos, la sintaxis de la primera es  con <code>""</code> y de la segunda con <code>[]</code>, puesto que se trata de un intervalo con ambos valores incluidos.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>No es imprescindible definir estas referencias en primer lugar, pero sí forma parte de los pasos previos al inicio propiamente dicho del proceso exploratorio de los datos. Podemos resumir estos pasos previos en tres:</p>
+<ol>
+<li>Definición de variables </li>
+<li>Preparación de librerías</li>
+<li>Creación del dataframe</li>
+</ol>
+<p>Procedemos al segundo punto:</p>
 
 </div>
 </div>
@@ -13141,6 +13156,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>La preparación de las librerías es la condición de posibilidad de nuestro trabajo. Conlleva dos pasos:</p>
+<ul>
+<li>Instalación (<code>!pip install</code> <em>librería</em>)</li>
+<li>Importación (<code>import</code> <em>librería</em> o <code>import</code> <em>librería</em> <code>as</code> <em>su abreviación</em>)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Instalaci&#243;n">Instalaci&#243;n<a class="anchor-link" href="#Instalaci&#243;n">&#182;</a></h3>
 </div>
 </div>
@@ -13148,7 +13175,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Empezamos instalado Folium. El comando para hacerlo es <code>!pip install ()</code></p>
+<p>Solo es necesaria la instalación de la librería que vayamos a utilizar a contunuación. Por lo que no es imprescindible instalar ahora Pandas. Podríamos hacerlo cuando el documento lo requiriese. Pero vamos a tenerla ya preparada. Tampoco es imprescindible instalar librerías si ya lo hemos hecho en otros cuadernos y Python las ha utilizado con anterioridad. Por ello no necesito instalarme Pandas de nuevo. La importación siempre es necesaria.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Instalo Folium: <code>!pip install folium</code></p>
 
 </div>
 </div>
@@ -13202,7 +13237,7 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Puesto que ya tenemos descargada la librería Pandas, no es necesario hacerlo en este notebook. Pero sí importarla, igual que Folium, para poder trabajar con ellas en este documento. Lo hacemos con el comando <code>import</code>. Importamos Pandas con abreviación típica <em>pd</em>.</p>
+<p>Ahora ya tengo las dos librerías instaladas en Python. Pero eso no significa que las tenga ya aquí en este documento para trabajar con ellas. Para ello necesito importarlas. Por eso, a diferencia que la instalación, que puede realizarse una sola vez, la importación es obligatoria en cada notebook en que quiera usarse. Con el comando <code>import</code> importo ambas librerías.La de pandas lo hago con su abreviación típica <em>pd</em>.</p>
 
 </div>
 </div>
@@ -13224,7 +13259,7 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Una vez tenemos las variables definidas (los datos y las coordenadas) y las librerías preparadas para trabajar empezamos a hacerlo. No queremos trabajar primero con los datos y luego con el mapa de manera separada, sino con ambos de manera conjunta para que en el mapa lea los datos de queremos, en este caso sobre los accidentes de tráfico.</p>
+<p>Una vez tenemos las variables definidas (los datos y las coordenadas) y las librerías preparadas es hora de empezar a trabajar con los datos. Necesito abrirlos desde este documento creando un <em>dataframe</em> que los abra. Pero antes (aunque puedo no hacerlo así) abro el mapa para tener presente el espacio en el que quiero proceder a la representación de los datos.</p>
 
 </div>
 </div>
@@ -13232,7 +13267,7 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Mapa-Zaragoza">Mapa Zaragoza<a class="anchor-link" href="#Mapa-Zaragoza">&#182;</a></h2><p>Ahora le pedimos a Python que dentro de la librería folium, nos presente el folio <em>Map</em> y seleccione las coordenadas anteriormente especificadas bajo el nombre <em>geo_zrgz</em>. Llamaremos a esta acción <strong>mapa_zrgz</strong></p>
+<h2 id="Mapa-Zaragoza">Mapa Zaragoza<a class="anchor-link" href="#Mapa-Zaragoza">&#182;</a></h2><p>De la librería Folium quiero que Python me muestre un mapa: el folio <em>map</em> con las cooredenadas anteriormente señaladas con la referencia <code>geo_zrgz</code>.  Definiremos esta acción <strong>mapa_zrgz</strong> con <code>=</code>.</p>
 
 </div>
 </div>
@@ -13249,6 +13284,14 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hemos definido la variable, que a continuación decimos que la ejecute.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13347,7 +13390,8 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ahora que tenemos este mapa, necesitamos que Python lea los datos que queremos que en él represente. La librería que puede hacer esto es Pandas. Auqnue tengamos la librería instalada e importada, aún no vemos en este archivo los datos. Tenemos que pedir a Python que con la librería Pandas nos lea los datos. Para ello ccreamos un dataframe (<em>df_zrgz</em>) que será el resultado (esto lo indicamos con <em>=</em>) de leer el documento. Esto último lo hace con la función <code>.read_tipodocumento()</code>. En este caso vamos a indicarle que es un documento <strong>csv</strong> aunque los datos no lo sean, porque de esta forma le decimos a Python que cada dato está delimitado por <code>;</code>. Una vez indicado el tipo de archivo corresponde en la sintaxis introducir la referencia del mismo. En nuestro caso es la base de datos, pero no es necesario copiar su link ya que anteriormente la hemos definido como variable, por lo que su nombre es suficiente (<em>url_zrgz</em>). Por último, le especificamos que introduzca los datos delimitados: <code>pd.read_csv(url_zrgz,delimiter=';</code>).</p>
+<p>Ahora que tenemos este mapa necesitamos que Python lea los datos que queremos que en él represente. La librería que puede hacer esto es Pandas. Auqnue tengamos la librería instalada e importada, aún no vemos en este archivo los datos. Tenemos que pedir a Python que con la librería Pandas nos lea los datos. Para ello creamos un dataframe (<em>df_zrgz</em>) que será el resultado (esto lo indicamos con <em>=</em>) de leer el documento al que lo hemos vinculado. Esto último lo hace con la función <code>.read_</code><em>tipodocumento</em>. En este caso vamos a indicarle que es un documento <strong>.csv</strong> aunque los datos no lo sean, porque de esta forma le decimos a Python que cada dato está delimitado por <code>;</code>. Al indicarle eso también haremos que el propio Python genere un archivo csv (como podemos comprobar en la interfaz de nuestro servidor) a partir de los datos de la api.</p>
+<p>Una vez indicado el tipo de archivo, corresponde en la sintaxis introducir la referencia del mismo. En nuestro caso es la base de datos, pero no es necesario copiar su link ya que anteriormente la hemos definido como variable, por lo que le damos la referencia (<em>url_zrgz</em>). Por último, le especificamos que introduzca los datos delimitados: <code>pd.read_csv(url_zrgz,delimiter=';')</code>.</p>
 
 </div>
 </div>
@@ -13355,7 +13399,7 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>NOTA</strong>: no termino de entender <code>,delimiter=';'</code></p>
+<p><strong>NOTA</strong>: Un delimitador es una secuencia de uno o más caracteres para especificar el límite entre regiones separadas e independientes en flujos de datos. Así logramos que presente los datos, que no son tabulados, en categorías.</p>
 
 </div>
 </div>
@@ -14954,7 +14998,7 @@ Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/lib/python3/dist-packa
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Esto es un resumen de los datos de la tabla. ´.info´nos da datos sobre el conjunto de datos que estamos tratando. Estos son sobre la naturaleza de los accidentes de tráfico que nos ocupan: año, motivo, dirección... A continuación queremos conocer la razón de cada accidente de tráfico, para lo que ponemos <code>['reason]</code> detrás de <em>df_zrgz</em>. No lleva <code>.</code> porque no se trata de una función sobre los datos sino una forma de visualización diferente en la que nosotros pedimos el dato que queremos que nos muestre. La sisntaxis es <code>nombredf['nombredecategoríadeldatoquequeremos']</code>, en este caso el motivo del accidente.</p>
+<p>Esto es un resumen de los datos de la tabla. <code>.info</code> nos informa sobre el conjunto de datos que estamos tratando. Estos son sobre la naturaleza de una serie de accidentes de tráfico: año, motivo, dirección... A continuación queremos conocer la razón de cada accidente de tráfico, para lo que ponemos <code>['reason]</code> detrás de <em>df_zrgz</em>. No lleva <code>.</code> porque no se trata de una función sobre los datos sino una forma de visualización diferente en la que nosotros pedimos el dato que queremos que nos muestre. La sisntaxis es <code>df['categoría']</code>, en este caso el motivo del accidente.</p>
 
 </div>
 </div>
@@ -15045,7 +15089,7 @@ Name: reason, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Si queremos ver el conjunto de los datos (en este caso razones de los dintintos accidentes) sin una distinción por filas o en este caso el número de cada uno de los accidentes recogidos en la base de datos utilizamos la función <code>unique()</code>.</p>
+<p>Si queremos ver el conjunto de los datos (en este caso razones de los dintintos accidentes) sin una distinción por filas o el número de cada uno de los accidentes recogidos en la base de datos utilizamos la función <code>unique()</code>.</p>
 
 </div>
 </div>
@@ -15098,7 +15142,7 @@ Name: reason, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>La función <em>unique</em> es para delimitar los valores únicos en columnas. Es decir, las razones (dato <em>reason</em> que elegimos visualizar antes) de los motivos del accidente que no se repiten en este conjunto de datos. Con la sintaxis descita anteriormente cambiamos la categoría que queremos que nos muestre para acercarnos más a los datos e ir extrayendo toda su información.</p>
+<p>La función <code>.unique()</code> sirve para delimitar los valores únicos en columnas. Es decir, las razones (categoría <em>reason</em> que elegimos visualizar antes) de los motivos del accidente que no se repiten en este conjunto de datos. Con la sintaxis descrita anteriormente cambiamos la categoría que queremos que nos muestre para acercarnos más a los datos e ir extrayendo toda su información.</p>
 
 </div>
 </div>
@@ -15141,6 +15185,14 @@ Name: reason, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Tras explorar los datos los representamos en el mapa.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Representaci&#243;n-en-el-mapa">Representaci&#243;n en el mapa<a class="anchor-link" href="#Representaci&#243;n-en-el-mapa">&#182;</a></h2>
 </div>
 </div>
@@ -15148,7 +15200,7 @@ Name: reason, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ponemos el dato de las coordenadas geográficas a representar en el mapa.</p>
+<p>Pedimos que nos enseñe los datos de las coordenadas geográficas a representar en el mapa que son los que se encuentran en la categoría <em>geometry</em>.</p>
 
 </div>
 </div>
@@ -15239,7 +15291,7 @@ Name: geometry, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ponemos el nombre de las calles de dichas localizaciones para poder escribirlo en el mapa.</p>
+<p>Le pedimos que nos enseñe el nombre de dichas coordenadas para tenerlas a mano para poder escribir su nombre en el mapa. La categoría es <em>firstAddress</em>. Añado la función <code>.unique()</code> para acortar su extensión. Esto no podía realizarlo en la función anterior porque trabajaba con números y era necesaria la distinción por líneas de cada una de las coordenadas para poder diferenciarlas. Pero ahora puedo prescindir de ello ya que trabajo con texto.</p>
 
 </div>
 </div>
@@ -15296,6 +15348,28 @@ Name: geometry, dtype: object</pre>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Creamos un mapa (m) a partir del anterior al que añadimos marcardores con las coordenadas y nombres de las calles correspondientes utilizando la función <code>folium.Marquer</code>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La sintaxis de la función <code>folium.map</code>es la siguiente:</p>
+<ul>
+<li>(<code>location=</code><em>coordenadas de referencia</em><code>,</code></li>
+<li><code>zoom_start=</code><em>número pertinente al caso</em><code>,</code></li>
+<li><code>tiles=</code><em>estilo de mapa que queramos</em>). </li>
+</ul>
+<p>En este caso he borrado esta opción ya que tras probar distintos estilos como 'Stamen Terrain' o 'Stamen Toner' he preferido el que viene definido en Folium y por tanto no necesita ser espedificado.</p>
+<p>La sintaxis de <code>folium.Marker</code>, que forma parte de nuestro nuevo mapa "m", es la siguiente:</p>
+<ul>
+<li><code>([*coordenadas],</code></li>
+<li><code>popup=</code><em>nombre de la calle</em><code>,</code></li>
+<li><code>tooltip=</code><em>lo que quiera que se vea al posicionar el cursor en el marcador</em><code>)</code> Puedo definir esta variable con antelación para dejarla preestablecida si quiero poner en todas las localizaciones la misma etiqueta; 'accidente' en este caso. La sintaxis entonces es para todos los marcadores <code>tooltip=tooltip)</code></li>
+<li><code>.add_to(m)</code> para añadir los cambios al nuevo mapa resultante. </li>
+</ul>
+<p>Lo he llevado a cabo con las dos primeras coordenadas como ejemplo pero el proceso es el mismo para todas.</p>
 
 </div>
 </div>
@@ -15455,7 +15529,7 @@ Name: geometry, dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>No entiendo por qué no se visualizan los marcadores, sigo trabajando en ello.</p>
+<p>Vemos así los puntos de los accidentes marcados en el mapa.</p>
 
 </div>
 </div>
